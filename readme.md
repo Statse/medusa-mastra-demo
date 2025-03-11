@@ -12,4 +12,6 @@ Instructions to start the project. Replace [project-name] with your project's na
 If you didn't generate the storefront, then you can go and generate a publishable API key by following these instructions: 
 https://docs.medusajs.com/resources/storefront-development/publishable-api-keys
 
+Default Mastra bot can only recommend products currently.
+
 Happy hacking. 
