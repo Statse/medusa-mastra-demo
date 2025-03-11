@@ -1,2 +1,4 @@
 demo-store-storefront/
 demo-store/
+store-bot/.env
+store-bot/node_modules
