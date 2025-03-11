@@ -1,6 +1,26 @@
 import { openai } from '@ai-sdk/openai';
 import { Agent } from '@mastra/core/agent';
 import { productsTool } from '../tools';
+import { PostgresStore, PgVector } from "@mastra/pg";
+import { Memory } from "@mastra/memory";
+
+const memory = new Memory({
+  storage: new PostgresStore({
+    host: "localhost",
+    port: 4444,
+    user: "mastra",
+    database: "mastra",
+    password: "zeus",
+  }),
+  vector: new PgVector(process.env.PG_CONNECTION_STRING as string),
+  embedder: openai.embedding("text-embedding-3-small"),
+  options: {
+    semanticRecall: {
+      topK: 10, // Include 10 most relevant past messages
+      messageRange: 2, // Messages before and after each result
+    },
+  },
+});
 
 export const customerSupportAgent = new Agent({
   name: 'Customer support agent',
@@ -21,4 +41,5 @@ export const customerSupportAgent = new Agent({
 `,
   model: openai('gpt-4'),
   tools: { productsTool },
+  memory,
 });
