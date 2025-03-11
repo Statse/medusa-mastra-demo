@@ -1,5 +1,7 @@
 # Readme
 
+This repository is designed to help you quickly start a Mastra and MedusaJS project.
+
 Instructions to start project. Replace [project-name] with your project name.
 
 1. docker-compose up
